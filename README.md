@@ -1,5 +1,6 @@
 # Gol
 
+[![Codemagic build status](https://api.codemagic.io/apps/64012c4b58fd135b54ac2e24/64012c4b58fd135b54ac2e23/status_badge.svg)](https://codemagic.io/apps/64012c4b58fd135b54ac2e24/64012c4b58fd135b54ac2e23/latest_build)
 [![gol](https://github.com/goldcoders/gol/actions/workflows/main.yaml/badge.svg)](https://github.com/goldcoders/gol/actions/workflows/main.yaml)
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
