@@ -16,7 +16,7 @@ workflows:
         APP_ID: 6446001372
       ios_signing:
         distribution_type: app_store # or: ad_hoc | development | enterprise
-        bundle_identifier: com.example.id
+        bundle_identifier: dev.goldcoders.gol
       cocoapods: 1.11.3
       flutter: 3.7.6
       xcode: latest
