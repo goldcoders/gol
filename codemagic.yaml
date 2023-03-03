@@ -13,7 +13,7 @@ workflows:
       app_store_connect: 48Q4VYRFUU
     environment:
       vars:
-        APP_ID: 6446001372
+        APP_ID: 5KZ8MD34QW.dev.goldcoders.gol
       ios_signing:
         distribution_type: app_store # or: ad_hoc | development | enterprise
         bundle_identifier: dev.goldcoders.gol
