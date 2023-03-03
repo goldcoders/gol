@@ -1,0 +1,44 @@
+# Automatically generated on 2022-12-08 UTC from https://codemagic.io/app/62ff920140351ed1191b93c5/settings
+# Note that this configuration is not an exact match to UI settings. Review and adjust as necessary.
+
+workflows:
+  gold-workflow:
+    name: GOLDCODERS
+    instance_type: mac_mini_m1
+    max_build_duration: 60
+    environment:
+      flutter: 3.7.6
+      xcode: latest
+      cocoapods: 1.11.3
+    cache:
+      cache_paths: []
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: gol-\w+
+          include: true
+          source: true
+      tag_patterns:
+        - pattern: '*'
+          include: true
+    scripts:
+      - flutter packages pub get
+      - |
+        LATEST_BUILD_NUMBER=$(app-store-connect get-latest-testflight-build-number '1640589597')
+
+        cd $CM_BUILD_DIR/ios
+
+        agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+      - find . -name "Podfile" -execdir pod install \;
+      - keychain initialize
+      - app-store-connect fetch-signing-files "dev.goldcoders.gol" --type
+        IOS_APP_STORE --create
+      - keychain add-certificates
+      - xcode-project use-profiles
+      - flutter build ipa --export-options-plist ~/export_options.plist -t lib/main_production.dart
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
+
